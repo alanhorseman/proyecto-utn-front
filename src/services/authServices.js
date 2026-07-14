@@ -1,5 +1,7 @@
+import ENVIRONMENT from "../config/environment.js"
+
 async function login(email, password) {
-  const res_http = await fetch('http://localhost:8080/api/auth/login', {
+  const res_http = await fetch(`${ENVIRONMENT.URL_API}/api/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
