@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import useForm from "../../hooks/useForm";
 import login from "../../services/authServices";
 import useRequest from "../../hooks/useRequest";
+import { AuthContext } from "../../context/AuthContext";
 
 export const LoginScreen = () => {
+  const {login: syncLogin} = useContext(AuthContext)
   const navigate = useNavigate()
 
   const {
@@ -29,7 +31,7 @@ export const LoginScreen = () => {
     () => {
       if(loginRes?.ok){
         console.log('Se loggeo bien')
-        localStorage.setItem('auth_token', loginRes?.data?.access_token)
+        syncLogin(loginRes?.data?.access_token)
         navigate('/home')
       }
     }, [loginRes]
