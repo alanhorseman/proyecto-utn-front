@@ -5,7 +5,7 @@ import login from "../../services/authServices";
 import useRequest from "../../hooks/useRequest";
 
 export const LoginScreen = () => {
-  const navitage = useNavigate()
+  const navigate = useNavigate()
 
   const {
     sendRequest: sendRequestLogin,

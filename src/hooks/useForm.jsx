@@ -9,7 +9,7 @@ function useForm(initial_form_state, submitFn) {
     setFormState((prevState) => {
       return {
         ...prevState,
-        [field_name]: field_value,
+        [field_name]: field_value
       };
     });
   }
