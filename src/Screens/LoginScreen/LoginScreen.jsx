@@ -30,7 +30,7 @@ export const LoginScreen = () => {
       if(loginRes?.ok){
         console.log('Se loggeo bien')
         localStorage.setItem('auth_token', loginRes?.data?.access_token)
-        navitage('/home')
+        navigate('/home')
       }
     }, [loginRes]
   )
