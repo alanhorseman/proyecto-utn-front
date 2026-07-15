@@ -1,7 +1,6 @@
 import ENVIRONMENT from "../config/environment.js"
 
 async function login(email, password) {
-  alert(ENVIRONMENT.URL_API)
   const res_http = await fetch(ENVIRONMENT.URL_API + '/api/auth/login', {
     method: 'POST',
     headers: {
