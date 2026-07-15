@@ -10,7 +10,7 @@ export const LoginScreen = () => {
   const {
     sendRequest: sendRequestLogin,
     loading: loginLoading,
-    res: loginRes,
+    response: loginRes,
     error: loginError,
   } = useRequest();
 
