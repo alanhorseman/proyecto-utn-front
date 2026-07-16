@@ -6,12 +6,12 @@ import { HomeScreen } from './Screens/HomeScreen/HomeScreen'
 import { AuthContextProvider } from './context/AuthContext'
 import AuthMiddleware from './middlewares/AuthMiddleware'
 import AlreadyAuthMiddleware from './middlewares/AlreadyAuthMiddleware'
+import VerifyEmailScreen from './Screens/VerifyEmailScreen/VerifyEmailScreen'
 
 function App() {
   return (
     <AuthContextProvider>
       <Routes>
-        <Route path='/*' element={<Navigate to={'/home'}/>} />
         <Route element={<AuthMiddleware/>}>
           <Route path='/home' element={<HomeScreen/>} />
         </Route>
@@ -19,7 +19,9 @@ function App() {
           <Route path='/' element={<LoginScreen/>} />
           <Route path='/login' element={<LoginScreen/>} />
           <Route path='/register' element={<RegisterScreen/>} />
+          <Route path='/verify-email' element={<VerifyEmailScreen/>} />
         </Route>
+        <Route path='/*' element={<Navigate to={'/home'}/>} />
       </Routes>
     </AuthContextProvider>
   )

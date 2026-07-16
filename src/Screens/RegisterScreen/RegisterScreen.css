@@ -1,0 +1,115 @@
+:root{
+  --page-bg: #ffffff;
+  --text-color: #111217;
+  --muted: #6b6b6b;
+  --purple: #4a154b; /* Slack-like purple */
+  --input-border: #d0d0d0;
+}
+
+.rs-page{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--page-bg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: var(--text-color);
+  padding: 32px 16px;
+}
+
+.rs-container{
+  width: 100%;
+  max-width: 720px;
+  text-align: center;
+}
+
+.rs-header{
+  margin-bottom: 8px;
+}
+
+.rs-logo{
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.rs-logo-img{
+  height: 40px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.rs-main{
+  background: transparent;
+  padding: 8px 24px;
+}
+
+.rs-title{
+  font-size: 40px;
+  line-height: 1.05;
+  margin: 8px 0 12px;
+  font-weight: 800;
+}
+
+.rs-subtitle{
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 28px;
+}
+
+.rs-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.rs-input{
+  width: 420px;
+  max-width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+}
+
+.rs-input:focus{
+  box-shadow: 0 0 0 3px rgba(74,21,75,0.06);
+  border-color: rgba(74,21,75,0.6);
+}
+
+.rs-button{
+  width: 420px;
+  max-width: 100%;
+  padding: 12px 18px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.rs-button:active{
+  transform: translateY(1px);
+}
+
+.rs-footer-link{
+  margin-top: 28px;
+}
+
+.rs-footer-link a{
+  color: #2f6f9b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+@media (max-width: 480px){
+  .rs-title{
+    font-size: 28px;
+  }
+  .rs-input, .rs-button{
+    width: 100%;
+  }
+}

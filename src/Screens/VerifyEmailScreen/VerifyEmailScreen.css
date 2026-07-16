@@ -1,0 +1,11 @@
+.vs-page { font-family: Arial, Helvetica, sans-serif; display:flex; align-items:center; justify-content:center; min-height:80vh; }
+.vs-container { max-width:760px; width:100%; padding:24px; }
+.vs-header { text-align:center; margin-bottom:24px; }
+.vs-logo-img { height:32px; }
+.vs-main { text-align:center; }
+.vs-title { font-size:28px; margin:12px 0; }
+.vs-subtitle { color:#333; margin:12px 0; font-size:16px; }
+.vs-note { color:#666; margin:8px 0 20px; }
+.vs-waiting { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:12px; }
+.vs-spinner { font-size:24px; }
+.vs-waiting-text { color:#333; }
