@@ -6,11 +6,6 @@ export const VerifyEmailScreen = () => {
   const location = useLocation()
   const email = location?.state?.email || ''
 
-  useEffect(() => {
-    // Aquí se puede iniciar un polling para comprobar el estado de verificación
-    // Por ahora sólo mostramos la pantalla informativa como solicitaste.
-  }, [])
-
   return (
     <div className="vs-page">
       <div className="vs-container">
@@ -26,16 +21,7 @@ export const VerifyEmailScreen = () => {
           <p className="vs-subtitle">
             Se ha enviado un correo de confirmación a {email ? <strong>{email}</strong> : 'tu dirección de correo'}.
             Por favor, revisá tu correo y hacé clic en el enlace de verificación que contiene.
-          </p>
-
-          <p className="vs-note">
-            No cierres esta ventana — la página se actualizará automáticamente cuando el correo sea verificado.
-          </p>
-
-          <div className="vs-waiting">
-            <div className="vs-spinner" aria-hidden="true">🔄</div>
-            <div className="vs-waiting-text">Esperando verificación...</div>
-          </div>
+          </p> 
         </main>
       </div>
     </div>

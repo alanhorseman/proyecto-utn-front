@@ -1,0 +1,125 @@
+/* Contenedor principal centrado */
+.slack-sent-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+/* Tarjeta contenedora con el ancho de Slack de la captura */
+.slack-sent-card {
+  width: 100%;
+  max-width: 700px; /* Un poco más ancho para albergar cómodamente el título largo */
+  text-align: center;
+}
+
+/* Contenedor del Logo */
+.slack-sent-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.slack-sent-logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+/* Título imponente idéntico al de la imagen */
+.slack-sent-title {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #1d1c1d;
+  line-height: 1.15;
+  margin: 0 0 16px 0;
+}
+
+/* Texto de descripción */
+.slack-sent-subtitle {
+  font-size: 16px;
+  color: #454545;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto 32px auto;
+}
+
+.slack-sent-subtitle strong {
+  color: #1d1c1d;
+  font-weight: 600;
+}
+
+/* Bloque de accesos directos a Gmail / Outlook */
+.slack-sent-apps {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.slack-sent-app-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #616061;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.slack-sent-app-link:hover {
+  color: #1d1c1d;
+  text-decoration: underline;
+}
+
+.slack-sent-app-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Cuadro de aviso para cerrar la ventana */
+.slack-sent-notice-box {
+  background-color: #f8f8f8;
+  border: 1px solid #e2e2e2;
+  border-radius: 12px;
+  padding: 14px 20px;
+  max-width: 450px;
+  margin: 0 auto 40px auto;
+}
+
+.slack-sent-notice-box p {
+  margin: 0;
+  font-size: 15px;
+  color: #616061;
+  font-weight: 500;
+}
+
+/* Estilos de los textos y enlaces del footer */
+.slack-sent-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.slack-sent-footer-text {
+  font-size: 15px;
+  color: #1d1c1d;
+  margin: 0;
+}
+
+.slack-sent-link {
+  color: #1264a3;
+  text-decoration: none;
+}
+
+.slack-sent-link:hover {
+  text-decoration: underline;
+}

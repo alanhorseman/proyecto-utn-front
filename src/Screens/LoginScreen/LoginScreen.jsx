@@ -11,12 +11,6 @@ export const LoginScreen = () => {
   const location = useLocation()
   const navigate = useNavigate();
 
-  // const [searchParams, setSearchParams] = useSearchParams()
-  // const [verificationStatus, setVerificationStatus] = useState(null)
-  // const [verificationMessage, setVerificationMessage] = useState("")
-
-
-  ///se agrego esto
   const [verification, setVerification] = useState({
     status: location?.state?.status || null,
     message: location?.status?.message || ""
@@ -45,33 +39,11 @@ export const LoginScreen = () => {
     }
   }, [loginRes]);
 
-  // useEffect(() => {
-  //   const token = searchParams.get('verification_token');
-  //   if(token){
-  //     const verifyAccount = async () => {
-  //       try {
-  //         const res = await verifyEmailToken(token);
-  //         setVerificationStatus('success')
-  //         setVerificationMessage(res.message || 'Correo verificado')
-  //       } catch (error) {
-  //         setVerificationStatus('error')
-  //         setVerificationMessage(res.error || 'No se pudo verificar correo')
-  //       } finally {
-  //         searchParams.delete('verification_token')
-  //         setSearchParams(searchParams)
-  //       }
-  //     }
-  //     verifyAccount()
-  //   }
-  // }, [searchParams, setSearchParams])
-
-  /// agrega esto
   useEffect(() => {
     if (location.state) {
       navigate("/login", { replace: true, state: null });
     }
   }, [location, navigate]);
-  ///
 
   const { formState, handleChange, handleSubmit } = useForm(
     initial_form_state,

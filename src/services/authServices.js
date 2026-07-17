@@ -53,3 +53,21 @@ export async function verifyEmailToken(token) {
 
   return res
 }
+
+export async function resetPassRequest(email){
+  const res_http = await fetch(ENVIRONMENT.URL_API + '/api/auth/reset-password-request', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email
+    })
+  })
+  const res = await res_http.json()
+  if(!res.ok){
+    throw new Error(res.message)
+  }
+
+  return res
+}

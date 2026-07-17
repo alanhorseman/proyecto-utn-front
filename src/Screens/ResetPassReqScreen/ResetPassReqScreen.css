@@ -1,0 +1,123 @@
+.slack-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.slack-card {
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.slack-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.slack-logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.slack-logo-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.slack-logo-text {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: #1d1c1d;
+}
+
+.slack-title {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #1d1c1d;
+  margin: 0 0 12px 0;
+}
+
+.slack-subtitle {
+  font-size: 15px;
+  color: #616061;
+  line-height: 1.5;
+  margin: 0 0 24px 0;
+}
+
+.slack-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.slack-input-group {
+  width: 100%;
+}
+
+.slack-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  font-size: 17px;
+  border: 1px solid #868686;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #1d1c1d;
+  box-sizing: border-box;
+  transition: all 0.15s ease-in-out;
+}
+
+.slack-input::placeholder {
+  color: rgba(134, 134, 134, 0.6);
+}
+
+.slack-input:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #1264a3;
+}
+
+.slack-button {
+  width: 100%;
+  height: 44px;
+  background-color: #4a154b;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.slack-button:hover {
+  background-color: #3f1240;
+}
+
+.slack-footer-text {
+  font-size: 14px;
+  color: #616061;
+  margin-top: 24px;
+}
+
+.slack-link {
+  color: #1264a3;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.slack-link:hover {
+  text-decoration: underline;
+}
