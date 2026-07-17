@@ -38,3 +38,18 @@ export async function register (name, email, password) {
 
   return res
 }
+
+export async function verifyEmailToken(token) {
+  const res_http = await fetch(ENVIRONMENT.URL_API + '/api/auth/verify-email?verification_token=' + token, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const res = await res_http.json()
+  if(!res.ok){
+    throw new Error(res.message)
+  }
+
+  return res
+}

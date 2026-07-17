@@ -7,6 +7,7 @@ import { AuthContextProvider } from './context/AuthContext'
 import AuthMiddleware from './middlewares/AuthMiddleware'
 import AlreadyAuthMiddleware from './middlewares/AlreadyAuthMiddleware'
 import VerifyEmailScreen from './Screens/VerifyEmailScreen/VerifyEmailScreen'
+import VerifyActionScreen from './Screens/VerifyActionScreen.jsx/VerifyActionScreen'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path='/register' element={<RegisterScreen/>} />
           <Route path='/verify-email' element={<VerifyEmailScreen/>} />
         </Route>
+        <Route path='/verify' element={<VerifyActionScreen/>} />
         <Route path='/*' element={<Navigate to={'/home'}/>} />
       </Routes>
     </AuthContextProvider>

@@ -1,0 +1,157 @@
+/* Importar tipografía limpia (similar a la de Slack) */
+@import url('https://fonts.googleapis.com/css2?family=Leka&family=Slack-Lato:wght@300;400;700;900&family=Space+Grotesk:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+.login-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Contenedor principal centrado */
+.login-container {
+  width: 100%;
+  max-width: 440px;
+  text-align: center;
+}
+
+/* Estilos del Logo */
+.logo-container {
+  margin-bottom: 32px;
+}
+
+.slack-logo {
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Título y Subtítulo */
+.login-title {
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #1d1c1d;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.75px;
+}
+
+.login-subtitle {
+  font-size: 0.95rem;
+  color: #4a154b; /* Color morado suave o gris oscuro, Slack usa #616061 */
+  color: #616061;
+  margin: 0 0 32px 0;
+  line-height: 1.4;
+}
+
+/* Formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.form-group {
+  width: 100%;
+}
+
+/* Inputs con el look redondeado de Slack */
+.form-input {
+  width: 100%;
+  height: 44px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 1px solid #868686;
+  border-radius: 12px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  color: #1d1c1d;
+}
+
+.form-input::placeholder {
+  color: #afafaf;
+}
+
+.form-input:focus {
+  border-color: #4a154b;
+  box-shadow: 0 0 0 1px #4a154b, 0 0 0 4px rgba(74, 21, 75, 0.15);
+}
+
+/* Botón Púrpura de Slack */
+.btn-submit {
+  width: 100%;
+  height: 44px;
+  background-color: #4a154b;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  margin-top: 8px;
+}
+
+.btn-submit:hover {
+  background-color: #3b113c;
+}
+
+.btn-submit:active {
+  background-color: #2c0d2e;
+}
+
+/* Enlace inferior de registro */
+.register-redirect {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  color: #616061;
+}
+
+.register-redirect a {
+  color: #1264a3; /* Azul Slack clásico para enlaces */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-redirect a:hover {
+  text-decoration: underline;
+}
+
+/* Clases de accesibilidad para ocultar labels visualmente */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Estilos básicos de feedback por si se activan */
+.verification-success,
+.verification-error {
+  width: 100%;
+  max-width: 440px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.verification-success {
+  background-color: #d1f2e5;
+  color: #007a5a;
+}
+
+.verification-error {
+  background-color: #fbe5e6;
+  color: #e01e5a;
+}
