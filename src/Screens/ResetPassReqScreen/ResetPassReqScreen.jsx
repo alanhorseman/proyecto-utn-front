@@ -3,9 +3,9 @@ import './ResetPassReqScreen.css';
 import useForm from '../../hooks/useForm';
 import useRequest from '../../hooks/useRequest';
 import { resetPassRequest } from '../../services/authServices';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
-export const ResetPassReq = () => {
+export const ResetPassReqScreen = () => {
   const navigate = useNavigate()
   const {
     sendRequest: sendRequestResetPass,
@@ -14,7 +14,7 @@ export const ResetPassReq = () => {
     error: reqResPassError
   } = useRequest()
   
-  initial_form_state = {
+  const initial_form_state = {
     email: ""
   }
 
@@ -66,12 +66,12 @@ export const ResetPassReq = () => {
           </button>
         </form>
 
-        <p className="slack-footer-text">
+        <div className="slack-footer-text">
           ¿Recordaste tu contraseña?{' '}
-          <a href="#login" className="slack-link">
-            Iniciar sesión
-          </a>
-        </p>
+          <p className="slack-link">
+            <Link to={"/login"}>Iniciar sesión</Link>
+          </p>
+        </div>
 
       </div>
     </div>

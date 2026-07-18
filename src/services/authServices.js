@@ -71,3 +71,22 @@ export async function resetPassRequest(email){
 
   return res
 }
+
+export async function resetPassConfirm(new_password, token){
+  const res_http = await fetch(ENVIRONMENT.URL_API + '/api/auth/reset-password-confirm', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      new_password: new_password
+    })
+  })
+  const res = await res_http.json()
+  if(!res.ok){
+    throw new Error(res.message)
+  }
+
+  return res
+}

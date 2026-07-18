@@ -57,5 +57,3 @@ export const ConfirmEmailScreen = ({ email = "aedev86@gmail.com" }) => {
     </div>
   );
 };
-
-export default PasswordEmailSent;

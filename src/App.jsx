@@ -8,8 +8,9 @@ import AuthMiddleware from './middlewares/AuthMiddleware'
 import AlreadyAuthMiddleware from './middlewares/AlreadyAuthMiddleware'
 import VerifyEmailScreen from './Screens/VerifyEmailScreen/VerifyEmailScreen'
 import VerifyActionScreen from './Screens/VerifyActionScreen.jsx/VerifyActionScreen'
-import { ResetPassReq } from './Screens/ResetPassReqScreen/ResetPassReqScreen'
+import { ResetPassReqScreen } from './Screens/ResetPassReqScreen/ResetPassReqScreen'
 import { ConfirmEmailScreen } from './Screens/ConfirmEmailScreen/ConfirmEmailScreen'
+import { ResetPassConfirmScreen } from './Screens/ResetPassConfirmScheen/ResetPassConfirmScreen'
 
 function App() {
   return (
@@ -26,9 +27,9 @@ function App() {
         </Route>
         <Route path='/verify' element={<VerifyActionScreen/>} />
         <Route path='/*' element={<Navigate to={'/home'}/>} />
-        <Route path='/reset-password-request' element={<ResetPassReq />} />
+        <Route path='/reset-password-request' element={<ResetPassReqScreen />} />
         <Route path='/confirm-email' element={<ConfirmEmailScreen/>} />
-        {/* <Route path='/reset-password-confirm' element={} /> */}
+        <Route path='/reset-password-confirm' element={<ResetPassConfirmScreen/>} />
       </Routes>
     </AuthContextProvider>
   )

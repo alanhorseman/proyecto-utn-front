@@ -50,9 +50,6 @@ export const LoginScreen = () => {
     onSubmit,
   );
 
-  console.log('mensaje de verificacion', verification.message);
-  
-
   return (
     <div className="login-screen">
       {verification.status === "success" && (
@@ -110,6 +107,10 @@ export const LoginScreen = () => {
 
           <button className="btn-submit">Iniciar sesión</button>
         </form>
+
+        <p className="reset-password">
+          <Link to={"/reset-password-request"}>¿Olvidaste tu contraseña? Haz clic aquí</Link>
+        </p>
 
         <p className="register-redirect">
           ¿No tienes cuenta? <Link to={"/register"}>Regístrate</Link>
