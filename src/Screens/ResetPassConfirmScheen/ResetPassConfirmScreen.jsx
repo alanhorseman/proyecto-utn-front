@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import "./ResetPassConfirmScreen.css";
 import useForm from "../../hooks/useForm";
-import { useNavigate, useSearchParams } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 import useRequest from "../../hooks/useRequest";
 import { resetPassConfirm } from "../../services/authServices";
+import { useEffect } from "react";
 
 export const ResetPassConfirmScreen = () => {
   const [localError, setLocalError] = useState(null);
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
-  const reset_token = searchParams("token");
+  const reset_token = searchParams.get("token");
 
   const initial_form_state = {
     password: "",
@@ -101,11 +102,12 @@ export const ResetPassConfirmScreen = () => {
           </button>
         </form>
 
-        <p className="slack-fields-footer-text">
-          <a href="#login" className="slack-fields-link">
-            Volver al inicio de sesión
-          </a>
-        </p>
+        <div className="slack-fields-footer-text">
+          Volver al inicio de sesión
+          <p className="slack-fields-link">
+            <Link to={"/login"}>Iniciar sesión</Link>
+          </p>
+        </div>
       </div>
     </div>
   );

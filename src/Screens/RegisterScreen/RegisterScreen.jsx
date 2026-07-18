@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './RegisterScreen.css'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import useRequest from '../../hooks/useRequest'
 import { register } from '../../services/authServices'
 import useForm from '../../hooks/useForm'
@@ -88,8 +88,10 @@ export const RegisterScreen = () => {
           </form>
 
           <div className="rs-footer-link">
-            <a href="#">¿Ya tenés cuenta? Iniciar sesión</a>
+            <p href="#">¿Ya tenés cuenta? <Link to={"/login"}>Iniciar sesión</Link></p>
           </div>
+
+          
         </main>
       </div>
     </div>
