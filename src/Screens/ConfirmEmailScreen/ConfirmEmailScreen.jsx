@@ -1,7 +1,7 @@
 import React from 'react';
 import './ConfirmEmailScreen.css'; // Importación de los estilos CSS independientes
 
-export const ConfirmEmailScreen = ({ email = "aedev86@gmail.com" }) => {
+export const ConfirmEmailScreen = ({ email = "prueba@gmail.com" }) => {
   return (
     <div className="slack-sent-container">
       <div className="slack-sent-card">

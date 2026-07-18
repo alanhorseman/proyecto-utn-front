@@ -13,6 +13,7 @@ function useRequest(){
       setLoading(true);
       setError(null)
       const server_response = await reqCbFn()
+      
       setResponse(server_response)
 
     } catch (error) {
