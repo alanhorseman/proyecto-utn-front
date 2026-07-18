@@ -24,8 +24,9 @@ export const ResetPassReqScreen = () => {
 
   useEffect(() => {
     if(reqResPassRes?.ok){
-      navigate('/confirm-email', )
-      /// state email
+      navigate('/confirm-email', {
+        state: {email: reqResPassRes?.data?.user.email}
+      })
     }
   }, [])
 
