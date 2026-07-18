@@ -110,5 +110,3 @@ export const ResetPassConfirmScreen = () => {
     </div>
   );
 };
-
-export default ResetPasswordFields;
