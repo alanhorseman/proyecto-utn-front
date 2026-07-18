@@ -53,6 +53,7 @@ export const ResetPassReqScreen = () => {
           <div className="slack-input-group">
             <input
               type="email"
+              name='email'
               value={formState.email}
               onChange={handleChange}
               placeholder="nombre@work-email.com"
