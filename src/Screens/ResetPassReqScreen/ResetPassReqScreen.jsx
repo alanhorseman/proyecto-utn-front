@@ -28,7 +28,7 @@ export const ResetPassReqScreen = () => {
         state: {email: reqResPassRes?.data?.user.email}
       })
     }
-  }, [])
+  }, [reqResPassRes])
 
   const {formState, handleChange, handleSubmit} = useForm(initial_form_state, onSubmit)
 

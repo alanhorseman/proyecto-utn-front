@@ -12,7 +12,7 @@ export const ResetPassConfirmScreen = () => {
 
   const [searchParams] = useSearchParams();
   const reset_token = searchParams.get("token");
-
+  
   const initial_form_state = {
     password: "",
     confirm_password: "",
@@ -37,7 +37,7 @@ export const ResetPassConfirmScreen = () => {
     }
 
     setLocalError(null);
-    sendReqConfirm(() => resetPassConfirm(reset_token, formData.password));
+    sendReqConfirm(() => resetPassConfirm(formData.password, reset_token));
   }
 
   useEffect(() => {
