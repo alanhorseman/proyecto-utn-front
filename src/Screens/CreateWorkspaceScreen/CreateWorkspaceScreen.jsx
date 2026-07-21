@@ -5,10 +5,8 @@ const CreateWorkspaceScreen = () => {
   const [step, setStep] = useState(1);
   const [workspaceName, setWorkspaceName] = useState("");
   const [userName, setUserName] = useState("");
-
   const [chatInput, setChatInput] = useState("");
   const [messages, setMessages] = useState([]);
-
   const [showChannelMenu, setShowChannelMenu] = useState(false);
 
   const messagesEndRef = useRef(null);
@@ -37,7 +35,7 @@ const CreateWorkspaceScreen = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [step, userName]);
+  }, [step, userName])
 
   useEffect(() => {
     if (step === 4 && messagesEndRef.current) {
@@ -272,6 +270,7 @@ const CreateWorkspaceScreen = () => {
       </div>
     );
   }
+
   return (
     <div className="slack-container">
       <div className="slack-left-panel">
