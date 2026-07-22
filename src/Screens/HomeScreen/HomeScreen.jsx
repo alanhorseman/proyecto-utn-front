@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import './HomeScreen.css';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { AuthContext } from '../../context/AuthContext';
+import useRequest from '../../hooks/useRequest';
+import { getAllWorkspaces } from '../../services/workspaceServices';
 
 const HomeScreen = () => {
+  const { logout, userData } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const {
+    sendRequest: fetchWorkspaces,
+    loading: workspacesLoading,
+    response: workspacesRes,
+    error: workspacesError,
+  } = useRequest();
+
+  useEffect(() => {
+    fetchWorkspaces(() => getAllWorkspaces());
+  }, []);
+
   const handleLogout = () => {
-    // Aquí puedes agregar la lógica para cerrar sesión
-    console.log('Cerrando sesión...');
+    logout();
   };
+
+  const handleSelectWorkspace = (workspace) => {
+    navigate('/create-workspace', {
+      state: {
+        step: 4,
+        workspaceName: workspace.workspace_nombre,
+        userName: userData?.nombre || 'Miembro'
+      }
+    });
+  };
+
+  const workspacesList = workspacesRes?.data?.workspaces || [];
 
   return (
     <div className="slack-home-container">
@@ -37,7 +65,7 @@ const HomeScreen = () => {
 
       <main className="slack-main-content">
         <section className="slack-hero">
-          <h1>¡Hola de nuevo! <span className="emoji-wave">👋</span></h1>
+          <h1>¡Hola de nuevo, {userData?.nombre || ''}! <span className="emoji-wave">👋</span></h1>
           <p>Elige un espacio de trabajo para comenzar.</p>
         </section>
 
@@ -58,36 +86,56 @@ const HomeScreen = () => {
             </div>
 
             <div className="slack-card-body">
-              <span className="body-subtitle">Listo para iniciar</span>
+              <span className="body-subtitle">
+                {workspacesLoading ? "Cargando tus espacios..." : "Listo para iniciar"}
+              </span>
               
-              <div className="workspace-item-row">
-                <div className="workspace-main-info">
-                  <div className="workspace-avatar">
-                    <div className="avatar-quad aq-1"></div>
-                    <div className="avatar-quad aq-2"></div>
-                    <div className="avatar-quad aq-3"></div>
-                    <div className="avatar-quad aq-4"></div>
-                  </div>
-                  <div className="workspace-text-details">
-                    <h3>test</h3>
-                    <div className="workspace-meta">
-                      <svg viewBox="0 0 24 24" width="12" height="12" className="meta-user-icon">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5-4-8-4z" fill="currentColor"/>
-                      </svg>
-                      <span>1 miembro • Más activos</span>
+              {workspacesError && (
+                <div className="workspaces-error-message" style={{ color: '#e01e5a', padding: '15px', textAlign: 'center' }}>
+                  Ocurrió un error al cargar los espacios: {workspacesError}
+                </div>
+              )}
+
+              {!workspacesLoading && !workspacesError && workspacesList.length === 0 && (
+                <div className="no-workspaces-message" style={{ padding: '30px 15px', textAlign: 'center', color: '#555', fontSize: '15px' }}>
+                  Aún no eres miembro de ningún espacio de trabajo. ¡Crea uno nuevo abajo!
+                </div>
+              )}
+
+              {!workspacesLoading && !workspacesError && workspacesList.map((workspace) => (
+                <div 
+                  key={workspace.workspace_id?._id || workspace.member_id} 
+                  className="workspace-item-row"
+                  onClick={() => handleSelectWorkspace(workspace)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <div className="workspace-main-info">
+                    <div className="workspace-avatar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#611f69', color: '#fff', fontWeight: 'bold', fontSize: '18px' }}>
+                      {workspace.workspace_nombre ? workspace.workspace_nombre.substring(0, 2).toUpperCase() : "WS"}
+                    </div>
+                    <div className="workspace-text-details">
+                      <h3>{workspace.workspace_nombre}</h3>
+                      <div className="workspace-meta">
+                        <svg viewBox="0 0 24 24" width="12" height="12" className="meta-user-icon">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5-4-8-4z" fill="currentColor"/>
+                        </svg>
+                        <span>Miembro • {workspace.member_rol === 'owner' ? 'Propietario' : 'Invitado'}</span>
+                      </div>
                     </div>
                   </div>
+                  <div className="workspace-arrow">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                    </svg>
+                  </div>
                 </div>
-                <div className="workspace-arrow">
-                  <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                  </svg>
-                </div>
-              </div>
+              ))}
             </div>
 
             <div className="slack-card-footer">
-              <p href="#create" className="link-create-workspace"><Link to={'/create-workspace'}>Crear un nuevo espacio de trabajo</Link></p>
+              <p className="link-create-workspace">
+                <Link to={'/create-workspace'}>Crear un nuevo espacio de trabajo</Link>
+              </p>
               
               <p className="footer-subtext">
                 ¿No encuentras tu espacio de trabajo? <a href="#help" className="link-secondary">Prueba con otro correo electrónico</a>
@@ -101,4 +149,5 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
 

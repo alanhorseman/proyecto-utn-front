@@ -1,13 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router";
 import "./CreateWorkspaceScreen.css";
+import useRequest from "../../hooks/useRequest";
+import { createWorkspace } from "../../services/workspaceServices";
 
 const CreateWorkspaceScreen = () => {
-  const [step, setStep] = useState(1);
-  const [workspaceName, setWorkspaceName] = useState("");
-  const [userName, setUserName] = useState("");
+  const location = useLocation();
+  const [step, setStep] = useState(location?.state?.step || 1);
+  const [workspaceName, setWorkspaceName] = useState(location?.state?.workspaceName || "");
+  const [userName, setUserName] = useState(location?.state?.userName || "");
   const [chatInput, setChatInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [showChannelMenu, setShowChannelMenu] = useState(false);
+
+  const {
+    sendRequest: sendCreateWorkspace,
+    loading: createLoading,
+    response: createRes,
+    error: createError,
+  } = useRequest();
 
   const messagesEndRef = useRef(null);
 
@@ -16,6 +27,12 @@ const CreateWorkspaceScreen = () => {
 
   useEffect(() => {
     if (step === 3) {
+      sendCreateWorkspace(() => createWorkspace(workspaceName));
+    }
+  }, [step]);
+
+  useEffect(() => {
+    if (createRes?.ok) {
       setMessages([
         {
           id: 1,
@@ -35,7 +52,7 @@ const CreateWorkspaceScreen = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [step, userName])
+  }, [createRes, userName]);
 
   useEffect(() => {
     if (step === 4 && messagesEndRef.current) {
@@ -79,8 +96,29 @@ const CreateWorkspaceScreen = () => {
     return (
       <div className="loading-screen-container">
         <div className="loading-box">
-          <p className="loading-text">Creando tu espacio de trabajo...</p>
-          <div className="loading-spinner"></div>
+          {createError ? (
+            <>
+              <p className="loading-text error-text" style={{ color: '#e01e5a', marginBottom: '15px' }}>
+                Error al crear el espacio de trabajo:
+              </p>
+              <p className="loading-text" style={{ fontSize: '16px', color: '#555', marginBottom: '20px' }}>
+                {createError}
+              </p>
+              <button 
+                type="button"
+                className="slack-submit-btn enabled" 
+                onClick={() => setStep(1)}
+                style={{ width: 'auto', padding: '10px 20px', cursor: 'pointer' }}
+              >
+                Volver a intentar
+              </button>
+            </>
+          ) : (
+            <>
+              <p className="loading-text">Creando tu espacio de trabajo...</p>
+              <div className="loading-spinner"></div>
+            </>
+          )}
         </div>
       </div>
     );
